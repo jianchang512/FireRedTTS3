@@ -25,6 +25,8 @@
 
 ## 针对 FireRed-TTS3 官方原版做了以下修改
 
+> [查看小红书官方原版 FireRedTeam/FireRedTTS3](https://github.com/FireRedTeam/FireRedTTS3)
+
 - 移除 flash_attn ，大多数普通用户部署时会遇到环境兼容问题而难以解决
 - 增加 webui.py(为节省显存，仅实现 voice clone 功能)
 - 增加 webuiall.py ，实现 克隆、设计、编辑功能
@@ -43,6 +45,9 @@ pip install -r requirements.txt
 <img width="1120" height="1028" alt="image" src="https://github.com/user-attachments/assets/237ea4da-109f-43d5-9b08-bf616c4e7b90" />
 
 > **当前问题**：方言似乎并未生效
+> 
+> **如果本地部署有困难，建议直接使用 Google Colab 运行，需要有Google账号并能科学上网，[点击该链接打开 Colab](https://colab.research.google.com/drive/1gi82EaS7nYTVeo99WU9K3udizEuAIwF6?usp=sharing)**
+
 
 
 ## Overview
