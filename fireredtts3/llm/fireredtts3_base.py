@@ -46,7 +46,7 @@ Qwen3_1_7B_ConfigDict = {
     "use_cache": True,
     "use_sliding_window": False,
     "vocab_size": 151936,
-    "attn_implementation": "flash_attention_2",
+    "attn_implementation": "sdpa",
 }
 
 
