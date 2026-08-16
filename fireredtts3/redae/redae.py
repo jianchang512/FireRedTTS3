@@ -34,7 +34,7 @@ class Qwen3ClsDownsample(torch.nn.Module):
             max_position_embeddings=max_position_embeddings,
             num_attention_heads=num_attention_heads,
             num_key_value_heads=num_key_value_heads,
-            attn_implementation='flash_attention_2',
+            attn_implementation='sdpa',
         )
         self.qwen3 = Qwen3Model(self.qwen3_config)
         self.cls_tok = torch.nn.Parameter(torch.ones(1, 1, hidden_size))
@@ -119,7 +119,7 @@ class RedAEAudioEncoder(torch.nn.Module):
             num_key_value_heads=num_key_value_heads,
             sliding_window=sliding_window,
             use_sliding_window=use_sliding_window,
-            attn_implementation='flash_attention_2',
+            attn_implementation='sdpa',
         )
         self.qwen3 = Qwen3Model(self.qwen3_config)
         if self.extra_downsample_rate > 1:
