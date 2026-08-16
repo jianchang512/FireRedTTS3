@@ -29,18 +29,7 @@ print(f"[INFO] Using compute device: {DEVICE}", flush=True)
 if DEVICE == "cpu":
     print("[WARN] Running on CPU. Generation speed might be slower.", flush=True)
 
-# --------------------------------------------------------------------------- #
-# Text front-end assets
-# --------------------------------------------------------------------------- #
-_LID_URL = "https://dl.fbaipublicfiles.com/fasttext/supervised-models/lid.176.ftz"
-_LID_PATH = os.path.join(HERE, "fireredtts3", "utils", "llm_tn", "models", "lid.176.ftz")
-os.makedirs(os.path.dirname(_LID_PATH), exist_ok=True)
-if not os.path.exists(_LID_PATH):
-    try:
-        urllib.request.urlretrieve(_LID_URL, _LID_PATH)
-        print(f"[INFO] fastText lid.176 downloaded to {_LID_PATH}", flush=True)
-    except Exception as exc:  # pragma: no cover
-        print(f"[WARN] Could not fetch fastText lid.176: {exc}", flush=True)
+
 
 os.environ.setdefault("LLM_TN_API_URL", "http://127.0.0.1:1/unused")
 os.environ.setdefault("LLM_TN_API_KEY", "unused")
