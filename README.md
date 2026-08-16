@@ -1,3 +1,8 @@
+
+
+
+
+
 <div align="center">
     <h1>
     FireRedTTS3
@@ -16,6 +21,26 @@
     <a href="#"><img src="https://img.shields.io/badge/Hugging%20Face-Model%20Page-yellow" alt="HF-model"></a>
     <a href="LICENSE"><img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" alt="Apache-2.0"></a>
 </div>
+
+
+## 针对 FireRed-TTS3 官方原版做了以下修改
+
+- 移除 flash_attn ，大多数普通用户部署时会遇到环境兼容问题而难以解决
+- 增加 webui.py(为节省显存，仅实现 voice clone 功能)
+- 增加 webuiall.py ，实现 克隆、设计、编辑功能
+
+使用方法
+```
+git clone https://github.com/jianchang512/FireRedTTS3
+cd FireRedTTS3
+pip install -r requirements.txt
+```
+
+- 启动webui.py ：`python webui.py`,如果在 colab 上使用，添加 share参数，即 `python webui.py --share`
+- 启动webuiall.py ：`python webuiall.py` 如果在 colab 上使用，添加 share参数，即 `python webuiall.py --share`
+
+
+
 
 
 ## Overview

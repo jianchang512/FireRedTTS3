@@ -469,12 +469,17 @@ with gr.Blocks(title="FireRedTTS3") as demo:
         outputs=[aco_out, aco_instruction],
     )
 
+import argparse
+parser = argparse.ArgumentParser(description="FireRedTTS3 WebUI")
+parser.add_argument("--share", action="store_true", help="Create a public Gradio link")
+args = parser.parse_args()
+
 if __name__ == "__main__":
     # 本地启动，自动打开浏览器
     demo.queue().launch(
         server_name="127.0.0.1",
         server_port=7860,
-        share=True,
+        share=args.share,
         inbrowser=True,
         theme=gr.themes.Citrus(),
         css=CSS,
