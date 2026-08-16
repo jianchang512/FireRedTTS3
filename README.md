@@ -41,6 +41,7 @@ pip install -r requirements.txt
 - 启动webui.py ：`python webui.py`,如果在 colab 上使用，添加 share参数，即 `python webui.py --share`
 - 启动webuiall.py ：`python webuiall.py` 如果在 colab 上使用，添加 share参数，即 `python webuiall.py --share`
 
+启动后默认webui地址是`http://127.0.0.1:7860`,在浏览器中打开即可使用
 
 <img width="1120" height="1028" alt="image" src="https://github.com/user-attachments/assets/237ea4da-109f-43d5-9b08-bf616c4e7b90" />
 

@@ -13,12 +13,13 @@ import numpy as np
 import soundfile as sf
 import torch
 import gradio as gr
-from huggingface_hub import snapshot_download
+os.environ['HF_ENDPOINT']='https://huggingface.co'
 try:
     requests.head('https://huggingface.co',timeout=3)
 except:
     os.environ['HF_ENDPOINT']='https://hf-mirror.com'
 
+from huggingface_hub import snapshot_download
 HERE = Path(os.path.dirname(os.path.abspath(__file__))).as_posix()
 
 # --------------------------------------------------------------------------- #
@@ -27,7 +28,7 @@ HERE = Path(os.path.dirname(os.path.abspath(__file__))).as_posix()
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 print(f"[INFO] Using compute device: {DEVICE}", flush=True)
 if DEVICE == "cpu":
-    print("[WARN] Running on CPU. Generation speed might be slower.", flush=True)
+    print("[ERROR] Running on CPU. May occur error and quit.\n#######\n无CUDA环境，很可能报错并退出，请确保有NVIDIA显卡并配置了 CUDA 12.9+\n", flush=True)
 
 
 
@@ -40,7 +41,8 @@ os.environ.setdefault("LLM_TN_API_KEY", "unused")
 MODEL_REPO = "FireRedTeam/FireRedTTS3"
 MODEL_DIR = f'{HERE}/pretrained_models'
 if not Path(f'{MODEL_DIR}/model.safetensors').exists():
-    snapshot_download(MODEL_REPO,local_dir=MODEL_DIR)
+    print(f"模型不存在， 将从 {os.environ['HF_ENDPOINT']} 下载模型到 {MODEL_DIR}")
+    snapshot_download(MODEL_REPO,local_dir=MODEL_DIR,endpoint=os.environ['HF_ENDPOINT'])
 print(f"[INFO] Weights at {MODEL_DIR}", flush=True)
 
 from fireredtts3.core import FireRedTTS3  # noqa: E402
@@ -68,7 +70,7 @@ RedAE.from_pretrained = _shared_redae
 # 自动绑定到检测到的 device (cuda/cpu)
 tts = FireRedTTS3(
     MODEL_DIR,
-    use_fasttext=True,
+    use_fasttext=False,
     use_llm_tn=False,
     use_wetext=True,
     #device=DEVICE,

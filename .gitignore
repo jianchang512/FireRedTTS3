@@ -1,6 +1,8 @@
 # Vscode
 .vscode
 .claude
+*.7z
+*.tmp
 pyrightconfig.json
 
 # Python
@@ -12,6 +14,9 @@ __pycache__/
 # Ckpt
 pretrained_models/
 
+
+runtime
+runtime/
 # Eval
 data
 data/
