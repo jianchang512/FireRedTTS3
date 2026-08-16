@@ -6,15 +6,20 @@ Supports automatic fallback between CUDA (GPU) and CPU.
 import functools
 import os
 import re
+import requests
 import urllib.request
-
+from pathlib import Path
 import numpy as np
 import soundfile as sf
 import torch
 import gradio as gr
 from huggingface_hub import snapshot_download
+try:
+    requests.head('https://huggingface.co',timeout=3)
+except:
+    os.environ['HF_ENDPOINT']='https://hf-mirror.com'
 
-HERE = os.path.dirname(os.path.abspath(__file__))
+HERE = Path(os.path.dirname(os.path.abspath(__file__))).as_posix()
 
 # --------------------------------------------------------------------------- #
 # Device Detection (自动检测 CUDA / CPU)
@@ -44,7 +49,9 @@ os.environ.setdefault("LLM_TN_API_KEY", "unused")
 # Weights & Model Loading
 # --------------------------------------------------------------------------- #
 MODEL_REPO = "FireRedTeam/FireRedTTS3"
-MODEL_DIR = '/content/FireRedTTS3/pretrained_models'
+MODEL_DIR = f'{HERE}/pretrained_models'
+if not Path(f'{MODEL_DIR}/model.safetensors').exists():
+    snapshot_download(MODEL_REPO,local_dir=MODEL_DIR)
 print(f"[INFO] Weights at {MODEL_DIR}", flush=True)
 
 from fireredtts3.core import FireRedTTS3  # noqa: E402
