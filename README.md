@@ -40,7 +40,9 @@ pip install -r requirements.txt
 - 启动webuiall.py ：`python webuiall.py` 如果在 colab 上使用，添加 share参数，即 `python webuiall.py --share`
 
 
+<img width="1120" height="1028" alt="image" src="https://github.com/user-attachments/assets/237ea4da-109f-43d5-9b08-bf616c4e7b90" />
 
+> **当前问题**：方言似乎并未生效
 
 
 ## Overview

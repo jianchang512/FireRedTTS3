@@ -10,3 +10,4 @@ wetext
 fasttext
 numpy
 soundfile
+requests

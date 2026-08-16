@@ -91,13 +91,13 @@ SAMPLE_RATE = tts.redae.sample_rate
 AUTO = "Auto-detect"
 LANGUAGES = [t.strip("<|>") for t in MULTI_LANG_TAGS]
 DIALECTS = [t.strip("<|>") for t in MULTI_DIALECT_TAGS]
-LANG_CHOICES = [AUTO] + LANGUAGES + [f"{d} (Chinese dialect)" for d in DIALECTS]
+LANG_CHOICES = [AUTO] + LANGUAGES + [f"{d}" for d in DIALECTS]
 
 
 def _resolve_language(choice: str):
     if not choice or choice == AUTO:
         return None
-    return choice.split(" (")[0]
+    return choice
 
 
 # --------------------------------------------------------------------------- #
