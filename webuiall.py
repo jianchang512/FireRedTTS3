@@ -41,7 +41,7 @@ os.environ.setdefault("LLM_TN_API_KEY", "unused")
 # --------------------------------------------------------------------------- #
 MODEL_REPO = "FireRedTeam/FireRedTTS3"
 MODEL_DIR = f'{HERE}/pretrained_models'
-if not Path(f'{MODEL_DIR}/model.safetensors').exists():
+if not Path(f'{MODEL_DIR}/fireredtts3_base/model.safetensors').exists():
     print(f"模型不存在， 将从 {os.environ['HF_ENDPOINT']} 下载模型到 {MODEL_DIR}")
     snapshot_download(MODEL_REPO,local_dir=MODEL_DIR,endpoint=os.environ['HF_ENDPOINT'])
 print(f"[INFO] Weights at {MODEL_DIR}", flush=True)
